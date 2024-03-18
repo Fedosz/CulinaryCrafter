@@ -1,4 +1,4 @@
-package com.example.models.entities
+package com.example.culinarycrafter.models.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
