@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_recipes"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Рецепты" />
+
+    <item
+        android:id="@+id/navigation_fridge"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Холодильник" />
+
+    <item
+        android:id="@+id/navigation_favourites"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Избранное" />
+
+    <item
+        android:id="@+id/navigation_user"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Профиль" />
+
+</menu>
