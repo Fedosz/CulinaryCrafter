@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/navigation_recipes"
-        android:icon="@android:drawable/ic_dialog_email"
+        android:icon="@drawable/search"
         android:title="Рецепты" />
 
     <item
         android:id="@+id/navigation_fridge"
-        android:icon="@android:drawable/ic_dialog_email"
+        android:icon="@drawable/kitchen"
         android:title="Холодильник" />
 
     <item
         android:id="@+id/navigation_favourites"
-        android:icon="@android:drawable/ic_dialog_email"
+        android:icon="@drawable/star"
         android:title="Избранное" />
 
     <item
         android:id="@+id/navigation_user"
-        android:icon="@android:drawable/ic_dialog_email"
+        android:icon="@drawable/person"
         android:title="Профиль" />
 
 </menu>
