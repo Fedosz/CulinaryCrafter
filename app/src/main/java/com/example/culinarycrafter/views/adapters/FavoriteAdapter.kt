@@ -9,41 +9,36 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.culinarycrafter.R
-import com.example.culinarycrafter.models.entities.RecipePercentEntity
 import com.example.culinarycrafter.models.enums.RecipeEnum
 
-class RecipeAdapter(private val listener: OnClickItemListener) :
-    ListAdapter<RecipePercentEntity, RecipeAdapter.RecipeHolder>(
-        RecipeComparator()
-    ) {
+class FavoriteAdapter(private val listener: OnClickItemListener) :
+    ListAdapter<RecipeEnum, FavoriteAdapter.FavoriteHolder>(FavoriteComparator()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeHolder {
-        return RecipeHolder.create(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteHolder {
+        return FavoriteHolder.create(parent)
     }
 
-    override fun onBindViewHolder(holder: RecipeHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavoriteHolder, position: Int) {
         holder.bind(getItem(position), listener)
     }
 
 
-    class RecipeHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class FavoriteHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val recipeImageView: ImageView = itemView.findViewById(R.id.recipeImageView)
         private val recipeTextView: TextView = itemView.findViewById(R.id.recipeTextView)
         private val deleteImageView: ImageView = itemView.findViewById(R.id.deleteImageView)
 
-
-        fun bind(recipe: RecipePercentEntity, listener: OnClickItemListener) {
-            recipeImageView.setImageResource(recipe.recipe.photo)
-            recipeTextView.text = "${recipe.recipe.value} (${recipe.percent}%)"
-            deleteImageView.visibility = View.GONE
-            itemView.setOnClickListener {
-                listener.onClickItem(recipe.recipe)
+        fun bind(recipe: RecipeEnum, listener: OnClickItemListener) {
+            recipeImageView.setImageResource(recipe.photo)
+            recipeTextView.text = recipe.value
+            deleteImageView.setOnClickListener {
+                listener.onClickItem(recipe)
             }
         }
 
         companion object {
-            fun create(parent: ViewGroup): RecipeHolder {
-                return RecipeHolder(
+            fun create(parent: ViewGroup): FavoriteHolder {
+                return FavoriteHolder(
                     LayoutInflater.from(parent.context)
                         .inflate(R.layout.recipe_item, parent, false)
                 )
@@ -52,19 +47,19 @@ class RecipeAdapter(private val listener: OnClickItemListener) :
 
     }
 
-    class RecipeComparator : DiffUtil.ItemCallback<RecipePercentEntity>() {
+    class FavoriteComparator : DiffUtil.ItemCallback<RecipeEnum>() {
         override fun areItemsTheSame(
-            oldItem: RecipePercentEntity,
-            newItem: RecipePercentEntity
+            oldItem: RecipeEnum,
+            newItem: RecipeEnum
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: RecipePercentEntity,
-            newItem: RecipePercentEntity
+            oldItem: RecipeEnum,
+            newItem: RecipeEnum
         ): Boolean {
-            return oldItem.recipe.name == newItem.recipe.name
+            return oldItem.name == newItem.name
         }
 
     }
