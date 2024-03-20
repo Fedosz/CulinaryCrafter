@@ -8,7 +8,7 @@ data class UserRecipeEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val login: String,
-    val recipeId: Long
+    val recipeId: String
 ) {
 
 }
