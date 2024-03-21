@@ -1,3 +1,8 @@
 package com.example.culinarycrafter.viewmodels.events
 
-interface FridgeViewModelEvents { }
+interface FridgeViewModelEvents {
+
+    fun onSuccessInsertIngredient()
+    fun onSuccessDeleteIngredient()
+
+}
