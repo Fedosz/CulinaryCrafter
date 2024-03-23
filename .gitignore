@@ -14,8 +14,11 @@
 .cxx
 local.properties
 
-# IntelliJ IDEA config cache
+# IntelliJ IDEA config cache.
 .idea
 
-# Ignore sensitive data
-.jks
+# Ignore sensitive data.
+*.jks
+
+# Ignore apk files.
+app/release
