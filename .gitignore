@@ -16,3 +16,6 @@ local.properties
 
 # IntelliJ IDEA config cache
 .idea
+
+# Ignore sensitive data
+.jks
