@@ -8,11 +8,11 @@ import com.example.culinarycrafter.models.enums.RecipeEnum
 
 class UserRepository(private val userDao: UserDao) {
 
-    suspend fun login(login: String, password: String) {
+    suspend fun register(login: String, password: String) {
         userDao.insert(UserEntity(login = login, password = password))
     }
 
-    suspend fun checkAvailability(login: String): UserEntity? {
+    suspend fun findByLogin(login: String): UserEntity? {
         return userDao.checkAvailability(login)
     }
 
