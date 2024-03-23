@@ -4,6 +4,10 @@ plugins {
     id ("kotlin-kapt")
 }
 
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
 android {
     namespace = "com.example.culinarycrafter"
     compileSdk = 34
@@ -48,7 +52,11 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
+    implementation(libs.androidx.monitor)
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1")
+    testImplementation("org.mockito:mockito-core:2.19.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 

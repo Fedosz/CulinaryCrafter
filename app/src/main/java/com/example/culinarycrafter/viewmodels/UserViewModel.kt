@@ -19,7 +19,7 @@ class UserViewModel(
 
     fun doLogin(login: String, password: String) {
         viewModelScope.launch {
-            val userExist = userRepository.checkAvailability(login)
+            val userExist = userRepository.findByLogin(login)
             if (userExist == null) {
                 events.onShowMessage("Пользователя не существует")
             } else if (userExist.password == password) {
@@ -31,9 +31,9 @@ class UserViewModel(
 
     fun doRegistration(login: String, password: String) {
         viewModelScope.launch {
-            val userExist = userRepository.checkAvailability(login)
+            val userExist = userRepository.findByLogin(login)
             if (userExist == null) {
-                userRepository.login(login, password)
+                userRepository.register(login, password)
                 events.doLogin(login)
                 _currentUser.value = login
             } else {
