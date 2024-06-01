@@ -5,7 +5,7 @@ import com.example.culinarycrafter.models.repositories.UserRepository
 
 class MyRecipesApplication : Application() {
 
-    val database by lazy { RecipeRoomDatabase.getDatabase(this) }
+    val database by lazy { DataBaseConfig.dataSource(this) }
     val userRepository by lazy { UserRepository(database.userDao()) }
 
 

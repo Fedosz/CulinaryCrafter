@@ -12,10 +12,16 @@ import com.example.culinarycrafter.models.MyRecipesApplication
 import com.example.culinarycrafter.viewmodels.UserViewModel
 import com.example.culinarycrafter.viewmodels.events.UserViewModelEvents
 import com.example.culinarycrafter.viewmodels.factories.UserViewModelFactory
+import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
+import java.util.Base64
 
 class UserFragment : Fragment(), UserViewModelEvents {
 
     private var _binding: UserFragmentBinding? = null
+
+    val key = "secretKey123456"
+
     private val binding get() = _binding!!
     private val viewModel: UserViewModel by viewModels {
         UserViewModelFactory(
@@ -53,7 +59,7 @@ class UserFragment : Fragment(), UserViewModelEvents {
         binding.loginButton.setOnClickListener {
             val login = binding.loginEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
-            if (login.isNotEmpty() && password.isNotEmpty()) viewModel.doLogin(login, password)
+            if (login.isNotEmpty() && password.isNotEmpty()) viewModel.doLogin(login, encryptAES(password, key))
             else onShowMessage("Введите данные")
         }
 
@@ -64,7 +70,7 @@ class UserFragment : Fragment(), UserViewModelEvents {
         binding.registrationButton.setOnClickListener {
             val login = binding.loginEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
-            viewModel.doRegistration(login, password)
+            viewModel.doRegistration(login, encryptAES(password, key))
         }
     }
 
@@ -91,5 +97,13 @@ class UserFragment : Fragment(), UserViewModelEvents {
 
         fun newInstance() = UserFragment()
 
+    }
+
+    fun encryptAES(input: String, key: String): String {
+        val cipher = Cipher.getInstance("AES/ECB/PKCS5Padding")
+        val secretKeySpec = SecretKeySpec(key.toByteArray(), "AES")
+        cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec)
+        val encryptedBytes = cipher.doFinal(input.toByteArray())
+        return Base64.getEncoder().encodeToString(encryptedBytes)
     }
 }

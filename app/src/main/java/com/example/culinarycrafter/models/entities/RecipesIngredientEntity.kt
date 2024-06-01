@@ -1,13 +1,29 @@
 package com.example.culinarycrafter.models.entities
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import lombok.AllArgsConstructor
+import lombok.Builder
+import lombok.Data
+import lombok.NoArgsConstructor
+import javax.persistence.*
+
 
 @Entity
-data class RecipesIngredientEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
-    val recipe: String,
-    val ingredient: String
-) {
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "recipes_ingredient")
+class RecipesIngredientEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", insertable = false, updatable = false)
+    private val id: Long? = null
+
+    @Column(name = "recipe", nullable = false)
+    private val recipe: String? = null
+
+    @Column(name = "ingredient", nullable = false)
+    private val ingredient: String? = null
 }
+
+

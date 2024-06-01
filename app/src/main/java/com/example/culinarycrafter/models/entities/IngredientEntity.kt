@@ -6,19 +6,17 @@ import lombok.Data
 import lombok.NoArgsConstructor
 import javax.persistence.*
 
-
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user_entity")
-class UserEntity {
+@Table(name = "categories")
+class Category {
     @Id
-    @Column(name = "login", nullable = false)
-    private val login: String? = null
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private val id = 0
 
-    @Column(name = "password", nullable = false)
-    private val password: String? = null
+    @Column(name = "name", nullable = false, length = 255)
+    private val name: String? = null
 }
-
