@@ -18,3 +18,6 @@
 |-----------|----------|
 | Backend <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png" width="20"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/junit/junit-original.svg" width="20"/> | <a href="https://github.com/Fedosz"><img src="https://github.com/Fedosz.png" width="50" style="border-radius:50%"/> <br> Жуков Фёдор Сергеевич</a> |
 | Frontend <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png" width="20"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" width="20"/> | <a href="https://github.com/lkhorasandzhian"><img src="https://github.com/lkhorasandzhian.png" width="50" style="border-radius:50%"/> <br> Хорасанджян Левон Арменович</a> |
+
+## Тестирование
+Ознакомиться с составленным Unit-тестами можно [здесь](https://github.com/Fedosz/CulinaryCrafter/tree/main/app/src/test/java/com/example/culinarycrafter/models/repositories).
